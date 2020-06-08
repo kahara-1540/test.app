@@ -1,0 +1,10 @@
+/**/
+img {
+  width: 300px;
+  height: 300px;
+}
+
+#kirinBeerImg, #asahiBeerImg, #santoryBeerImg, #sapporoBeerImg, highballImg, lemonImg, grapeFruitImg, grapeImg, peachImg, horoyoiImg {
+  width: 50%;
+  height: 50%; 
+}

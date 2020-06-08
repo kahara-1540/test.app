@@ -1,0 +1,865 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+
+    const foods = [
+          'ピスタチオ',
+          'ビーフジャーキー',
+          '柿の種',
+          'チーズ'
+        ];
+
+    const ds = [
+          'ストレート',
+          'ロック',
+          'ソーダ割',
+          'コーラ割',
+        ];
+    // Page init event
+    document.addEventListener('init', function(event) {
+      var page = event.target;
+      //home ページ
+      if (page.matches('#home-page')) {
+
+        page.querySelector('#go-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('place.html');
+        };
+      //場所 ページ
+      } else if (page.matches('#place-page')) {
+
+        page.querySelector('#house-button').onclick = function() {
+          document.querySelector('#navigator').bringPageTop('who.html');
+        };
+
+        page.querySelector('#shop-button').onclick = function() {
+          document.querySelector('#navigator').bringPageTop('izakaya.html');
+        };
+      //誰と飲む ページ
+      } else if (page.matches('#who-page')) {
+        
+        page.querySelector('#one-button').onclick = function() {
+          document.querySelector('#navigator').bringPageTop('drinks.html');
+        };
+
+        page.querySelector('#friend-button').onclick = function() {
+          document.querySelector('#navigator').bringPageTop('drinks.html');
+        };
+
+        page.querySelector('#zoom-button').onclick = function() {
+          document.querySelector('#navigator').bringPageTop('drinks.html');
+        };
+      //ドリンクページ
+      } else if (page.matches('#drinks-page')) {
+        
+        page.querySelector('#beer-button').onclick = function() {
+          document.querySelector('#navigator').bringPageTop('beers.html');
+        };
+
+        page.querySelector('#highball-button').onclick = function() {
+          document.querySelector('#navigator').bringPageTop('highballs.html');
+        };
+
+        page.querySelector('#sawa-button').onclick = function() {
+          document.querySelector('#navigator').bringPageTop('sawas.html');
+        };
+
+        page.querySelector('#free-button').onclick = function() {
+          document.querySelector('#navigator').bringPageTop('free.html');
+        };
+      //ビールページ
+      } else if (page.matches('#beers-page')) {
+        
+        page.querySelector('#kirin-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('kirin.html');
+        };
+
+        page.querySelector('#asahi-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('asahi.html');
+        };
+
+        page.querySelector('#santory-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('santory.html');
+        };
+
+        page.querySelector('#sapporo-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('sapporo.html');
+        };
+      //ハイボールページ
+      } else if (page.matches('#highballs-page')) {
+        
+        page.querySelector('#jim-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('jim.html');
+        };
+
+        page.querySelector('#torys-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('torys.html');
+        };
+
+        page.querySelector('#santoryWiskey-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('santoryWiskey.html');
+        };
+
+        page.querySelector('#maker-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('maker.html');
+        };
+      //チューハイページ
+      } else if (page.matches('#sawas-page')) {
+        
+        page.querySelector('#lemon-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('lemon.html');
+        };
+
+        page.querySelector('#grapeFruit-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('grapeFruit.html');
+        };
+
+        page.querySelector('#grape-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('grape.html');
+        };
+
+        page.querySelector('#peach-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('peach.html');
+        };
+
+        page.querySelector('#horoyoi-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('horoyoi.html');
+        };
+      //最終画面
+      //ビール kirin.ver
+      } else if (page.matches('#kirin-page')) {
+
+        const kirinBeerImg = document.getElementById('kirinBeerImg');
+        const kirinImages = [
+          'img/00000003730474_A01.jpg',
+          'img/10004051b.jpg',
+          'img/9717212_3L2.jpg',
+          'img/ragar.jpg'
+        ];
+
+        let n = Math.floor(Math.random() * kirinImages.length);
+        kirinBeerImg.src = kirinImages[n];
+
+        
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+      //ビール asahi.ver
+      } else if (page.matches('#asahi-page')) {
+
+        const asahiBeerImg = document.getElementById('asahiBeerImg');
+        const asahiImages = [
+          'img/1564725639077_hc3v1xo5w7wd1zx012uy8ts1.jpg',
+          'img/clear.jpg'
+        ];
+
+        let n = Math.floor(Math.random() * asahiImages.length);
+        asahiBeerImg.src = asahiImages[n];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+      //ビール santory.ver
+      } else if (page.matches('#santory-page')) {
+
+        const santoryBeerImg = document.getElementById('santoryBeerImg');
+        const santoryImages = [
+          'img/puremoru.jpg',
+          'img/04901777185272.jpg'
+        ];
+
+        let n = Math.floor(Math.random() * santoryImages.length);
+        santoryBeerImg.src = santoryImages[n];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+      //ビール sapporo.ver
+      } else if (page.matches('#sapporo-page')) {
+
+        const sapporoBeerImg = document.getElementById('sapporoBeerImg');
+        const sapporoImages = [
+          'img/SA1558_2.jpg',
+          'img/kurolabel.jpg'
+        ];
+
+        let n = Math.floor(Math.random() * sapporoImages.length);
+        sapporoBeerImg.src = sapporoImages[n];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+      //最終画面
+      // ハイボール jim.ver
+      } else if (page.matches('#jim-page')) {
+
+        const drinking = document.getElementById('jDrinking');
+        let w = Math.floor(Math.random() * ds.length);
+        drinking.textContent = ds[w];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+        //ハイボール torys.ver
+      } else if (page.matches('#torys-page')) {
+
+        const drinking = document.getElementById('tDrinking');
+        let w = Math.floor(Math.random() * ds.length);
+        drinking.textContent = ds[w];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+        //ハイボール santorywiskey.ver
+      } else if (page.matches('#santoryWiskey-page')) {
+
+        const drinking = document.getElementById('sDrinking');
+        let w = Math.floor(Math.random() * ds.length);
+        drinking.textContent = ds[w];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+        //ハイボール maker's mark.ver
+      } else if (page.matches('#maker-page')) {
+
+        const drinking = document.getElementById('mDrinking');
+        let w = Math.floor(Math.random() * ds.length);
+        drinking.textContent = ds[w];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+        //最終画面
+        //チューハイ lemon.ver
+      } else if (page.matches('#lemon-page')) {
+
+        const leomonImg = document.getElementById('lemonImg');
+        const lemonImages = [
+          'img/71-56pFcFjL._AC_SY606_.jpg',
+          'img/71pLtQLJTVL._AC_SY606_.jpg',
+          'img/71jH1QVNUNL._AC_SL1500_.jpg',
+          'img/61pK0dxhWCL._AC_SX385_.jpg',
+          'img/41OgBHA7pNL._AC_SY445_.jpg',
+          'img/61pK9CYBo2L._SX522_.jpg',
+          'img/51vmOhIkYaL._AC_SY400_.jpg',
+        ];
+
+        let n = Math.floor(Math.random() * lemonImages.length);
+        lemonImg.src = lemonImages[n];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+        //チューハイ grapeFruit.ver
+      } else if (page.matches('#grapeFruit-page')) {
+
+        const grapeFruitImg = document.getElementById('grapeFruitImg');
+        const grapeFruitImages = [
+          'img/10003781b.jpg',
+          'img/00000003688911_A01.jpg',
+          'img/61dQHR1yjUL._AC_SX466_.jpg',
+          'img/61Bs9d sBXL._AC_SY606_.jpg',
+          'img/71tNFR50khL._AC_SX679_.jpg',
+        ];
+
+        let n = Math.floor(Math.random() * grapeFruitImages.length);
+        grapeFruitImg.src = grapeFruitImages[n];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+        //チューハイ grape.ver
+      } else if (page.matches('#grape-page')) {
+
+        const grapeImg = document.getElementById('grapeImg');
+        const grapeImages = [
+          'img/10003716b.jpg',
+          'img/4901777211742.jpg',
+          'img/4901777284807.jpg',
+          'img/images.jpg',
+        ];
+
+        let n = Math.floor(Math.random() * grapeImages.length);
+        grapeImg.src = grapeImages[n];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+        //チューハイ peach.ver
+      } else if (page.matches('#peach-page')) {
+
+        const peachImg = document.getElementById('peachImg');
+        const peachImages = [
+          'img/7159MXZRV7L._AC_SX466_.jpg',
+          'img/00000003710248_A01.jpg'
+        ];
+
+        let n = Math.floor(Math.random() * peachImages.length);
+        peachImg.src = peachImages[n];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+        //チューハイ horoyoi.ver
+      } else if (page.matches('#horoyoi-page')) {
+
+        const horoyoiImg = document.getElementById('horoyoiImg');
+        const horoyoiImages = [
+          'img/4901777211742.jpg',
+          'img/4901777284807.jpg',
+          'img/bigbossshibazaki_4901777247277.jpg',
+          'img/c77445.jpg',
+          'img/71UGv6tPxkL._AC_SL1444_.jpg',
+          'img/00000003710248_A01.jpg',
+          'img/liquor-boss1_23168.jpg',
+        ];
+
+        let n = Math.floor(Math.random() * horoyoiImages.length);
+        horoyoiImg.src = horoyoiImages[n];
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+        //なんでもいいページ
+      } else if (page.matches('#free-page')) {
+
+        const randomImages = [
+          'img/4901777211742.jpg',
+          'img/4901777284807.jpg',
+          'img/bigbossshibazaki_4901777247277.jpg',
+          'img/c77445.jpg',
+          'img/71UGv6tPxkL._AC_SL1444_.jpg',
+          'img/00000003710248_A01.jpg',
+          'img/liquor-boss1_23168.jpg',
+        ];
+
+        count = -1;
+        imgTimer();
+
+        function imgTimer() {
+          count++; //*3
+          //画像の枚数確認
+          if (count == randomImages.length) count = 0; //*4
+          //画像出力
+          randomImg.src = randomImages[count]; //*5
+          //次のタイマー呼びだし
+          setTimeout("imgTimer()",1000); //*6
+        } 
+
+        const bo = document.getElementById('bo');
+        let o1 = Math.floor(Math.random() * foods.length);
+        bo.textContent = foods[o1];
+
+        page.querySelector('#top-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('home.html',{animation:"default"});
+        };
+
+        page.querySelector('#next-button').onclick = function() {
+          document.querySelector('#navigator').resetToPage('drinks.html',{animation:"default"});
+        };
+
+      }
+
+    });
+
+    if (ons.platform.isIPhoneX()) {
+      document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+      document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
+    }
+  </script>
+</head>
+
+<body>
+  <ons-navigator id="navigator" page="home.html"></ons-navigator>
+
+  <ons-template id="home.html">
+    <ons-page id="home-page">
+      <ons-toolbar>
+        <div class="center">HOME</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <h1>今日は何飲む？？</h1>
+        <img src="img/8462-546x546.png" style="width:500px, height:500px">
+        <ons-button id="go-button">Let's go!!</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="place.html">
+    <ons-page id="place-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>HOME</ons-back-button></div>
+        <div class="center">場所決め</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>どこで飲む？</p>
+        <ons-button id="house-button">自宅で飲む！</ons-button>
+        <ons-button id="shop-button">居酒屋で飲む！</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="izakaya.html">
+    <ons-page id="izakaya-page">
+      <ons-toolbar>
+        <div class="center">居酒屋で飲む！</div>
+        <div class="left"><ons-back-button>場所決め</ons-back-button></div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>ドリンク決まってる？</p>
+        <ons-button id="yes-button">決まっている！</ons-button>
+        <ons-button id="no-button">決まっていない。</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="who.html">
+    <ons-page id="who-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>場所決め</ons-back-button></div>
+        <div class="center">飲み方</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>誰と飲む？</p>
+        <ons-button id="one-button">1人で飲む！</ons-button>
+        <ons-button id="friend-button">友達と飲む！</ons-button>
+        <ons-button id="zoom-button">zoom飲み</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="drinks.html">
+    <ons-page id="drinks-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>飲み方</ons-back-button></div>
+        <div class="center">お酒の種類</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>どれ飲む？</p>
+        <ons-button id="beer-button">ビール</ons-button>
+        <ons-button id="highball-button">ハイボール</ons-button>
+        <ons-button id="sawa-button">チューハイ</ons-button>
+        <ons-button id="free-button">なんでもいい！</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="beers.html">
+    <ons-page id="beers-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>お酒の種類</ons-back-button></div>
+        <div class="center">ビール</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>お好みのビールは？</p>
+        <ons-button id="kirin-button">KIRIN</ons-button>
+        <ons-button id="asahi-button">Asahi</ons-button>
+        <ons-button id="santory-button">santory</ons-button>
+        <ons-button id="sapporo-button">SAPPORO</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="highballs.html">
+    <ons-page id="highballs-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>お酒の種類</ons-back-button></div>
+        <div class="center">ハイボール</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>お好みのウィスキーは？</p>
+        <ons-button id="jim-button">Jim Beam</ons-button>
+        <ons-button id="torys-button">TORYS</ons-button>
+        <ons-button id="santoryWiskey-button">サントリーウィスキー</ons-button>
+        <ons-button id="maker-button">Maker's Mark</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="sawas.html">
+    <ons-page id="sawas-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>お酒の種類</ons-back-button></div>
+        <div class="center">チューハイ</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>味の選択！</p>
+        <ons-button id="lemon-button">レモン</ons-button>
+        <ons-button id="grapeFruit-button">グレープフルーツ</ons-button>
+        <ons-button id="grape-button">ぶどう</ons-button>
+        <ons-button id="peach-button">もも</ons-button>
+        <ons-button id="horoyoi-button">ほろよい</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="free.html">
+    <ons-page id="free-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>お酒の種類</ons-back-button></div>
+        <div class="center">ルーレット</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>勝手に決めちゃう！！</p>
+        <img src="" id="randomImg">
+        <ons-button id="decided-button">stop<ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="kirin.html">
+    <ons-page id="kirin-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="" id="kirinBeerImg">
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+   <ons-template id="asahi.html">
+    <ons-page id="asahi-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="" id="asahiBeerImg">
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="santory.html">
+    <ons-page id="santory-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="" id="santoryBeerImg">
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="sapporo.html">
+    <ons-page id="sapporo-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="" id="sapporoBeerImg">
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="jim.html">
+    <ons-page id="jim-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="img/jim01.jpg" class="highballImg">
+        <p>オススメの飲み方</p>
+        <p id="jDrinking"></p>
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="torys.html">
+    <ons-page id="torys-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="img/9f4da0f9-a606-4b53-991e-3b4600c59ee4.jpg._CB485979301__SL300__.jpg" class="highballImg">
+        <p>オススメの飲み方</p>
+        <p id="tDrinking"></p>
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="santoryWiskey.html">
+    <ons-page id="santoryWiskey-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="img/2760472_3L1.jpg" class="highballImg">
+        <p>オススメの飲み方</p>
+        <p id="sDrinking"></p>
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="maker.html">
+    <ons-page id="maker-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="img/81vzpt0J5LL._AC_SY445_.jpg" class="highballImg">
+        <p>オススメの飲み方</p>
+        <p id="mDrinking"></p>
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="lemon.html">
+    <ons-page id="lemon-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="" id="lemonImg">
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="grapeFruit.html">
+    <ons-page id="grapeFruit-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="" id="grapeFruitImg">
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="grape.html">
+      <ons-page id="grape-page">
+        <ons-toolbar>
+          <div class="center">決定！！</div>
+        </ons-toolbar>
+
+        <div class="content" style="text-align: center">
+          <p>今日はこれ！！</p>
+          <img src="" id="grapeImg">
+          <p>オススメのおつまみ</p>
+          <p id="bo"></p>
+          <ons-button id="next-button">次のお酒を決める</ons-button>
+          <ons-button id="top-button">HOMEに戻る</ons-button>
+        </div>
+      </ons-page>
+    </ons-template>
+
+  <ons-template id="peach.html">
+    <ons-page id="peach-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="" id="peachImg">
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="horoyoi.html">
+    <ons-page id="horoyoi-page">
+      <ons-toolbar>
+        <div class="center">決定！！</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>今日はこれ！！</p>
+        <img src="" id="horoyoiImg">
+        <p>オススメのおつまみ</p>
+        <p id="bo"></p>
+        <ons-button id="next-button">次のお酒を決める</ons-button>
+        <ons-button id="top-button">HOMEに戻る</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+</body>
+</html>
